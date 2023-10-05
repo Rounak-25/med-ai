@@ -1,0 +1,30 @@
+# Dictionary mapping diseases to their symptoms
+disease_symptoms = {
+    "Influenza (Flu)": ["fever", "ough", "fatigue", "muscle aches"],
+    "Common Cold": ["runny or stuffy nose", "sneezing", "sore throat", "cough"],
+    "COVID-19": ["fever", "cough", "shortness of breath", "loss of taste or smell"],
+    "Diabetes": ["excessive thirst","frrequent urination",'fatigue',"blurred vision"],
+    # Add the rest of the diseases and their symptoms here
+}
+
+# Function to check symptoms and suggest possible diseases
+def symptom_checker(symptoms):
+    possible_diseases = []
+
+    for disease, disease_symptom_list in disease_symptoms.items():
+        if all(symptom in disease_symptom_list for symptom in symptoms):
+            possible_diseases.append(disease)
+
+    return possible_diseases
+
+# Example usage
+sym = input("Enter your symptoms(please use small letters): ")
+user_symptoms = [sym]
+possible_diseases = symptom_checker(user_symptoms)
+
+if possible_diseases:
+    print("Possible diseases that match your symptoms:")
+    for disease in possible_diseases:
+        print("- " + disease)
+else:
+    print("No matching diseases found for your symptoms.")
